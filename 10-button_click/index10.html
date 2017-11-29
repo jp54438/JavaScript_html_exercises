@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+
+    <script> 
+      function showAlert() {
+      window.alert("Alert!!")  
+      }
+
+      function ready() {
+        var button = document.querySelector('#alertBtn')
+        button.onclick = showAlert
+      }
+
+      window.onload = ready
+    </script>
+  </head>
+    <body>
+   
+      <button id="alertBtn">Näytä alert</button>
+  
+
+	  </body>
+</html>

@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+
+    <script> 
+      function randomNumber1(event) {
+        window.alert(Math.floor(Math.random() * 10) + 1)
+        return false  
+      }
+
+      function randomNumber2(event) {
+//        Math.random() * (max - min) + min;
+        window.alert(Math.floor(Math.random() * (31 - 20) + 20))
+        return false  
+      }
+      function ready() {
+        var button = document.querySelector('#rnd')
+        button.addEventListener('click', randomNumber1)
+        button.addEventListener('click', randomNumber2)
+      }
+
+      window.addEventListener('load', ready)
+    </script>
+  </head>
+    <body>
+    <button id="rnd">Random</button>
+
+	  </body>
+</html>

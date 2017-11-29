@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+
+    <script>   
+      function randomNumber(event) {
+        window.alert(Math.floor(Math.random() * 10) + 1)
+        document.querySelector('#rnd').removeEventListener('click', randomNumber)
+        return false  
+      }
+
+      function ready() {
+        var button = document.querySelector('#rnd')
+        button.addEventListener('click', randomNumber)
+      }
+
+        window.addEventListener('load', ready)
+    </script>
+  </head>
+    <body>
+    <button id="rnd">Random</button>
+
+	  </body>
+</html>

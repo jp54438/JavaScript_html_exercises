@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+
+    <script> 
+      function doRegex(teksti, tyyppi){
+        
+        if(tyyppi === 'email'){
+         return new RegExp('^[a-z]{1,}[@]{1}[a-z]{1,}$').test(teksti)
+        }
+        else if(tyyppi === 'age') {
+          return  new RegExp('^[0-9]{1,}$').test(teksti)
+        }
+        else if(tyyppi === 'nimi') {
+          return  new RegExp('^[A-z]{1,}$').test(teksti)
+        }
+        return false        
+      }
+
+      function showAlert() {
+      var nimi = document.forms.tiedot.nimi.value
+      var email = document.forms.tiedot.email.value
+      var age = document.forms.tiedot.age.value
+      
+      if(!(doRegex(nimi, 'nimi'))) {
+        nimi = nimi + ' on virheellinen muoto'
+      }
+      if(!(doRegex(age, 'age'))) {
+        age = age + ' on virheellinen muoto'
+      }
+      
+      if(!(doRegex(email, 'email'))) {
+        email = email + ' on virheellinen muoto'
+      }
+      window.alert('nimi: ' + nimi + '\n'
+                    + 'ikä: '+age + '\n'            
+                    + 'email: '+email)
+      console.log('clicked')
+      return false  
+      }
+
+      function ready() {
+        var button = document.querySelector('#button')
+        button.onclick = showAlert
+      }
+
+      window.onload = ready
+    </script>
+  </head>
+    <body>
+   
+      <form name="tiedot">
+        Nimi: <input type="text" name="nimi" label="Nimi"/><br>
+        Ikä: <input type="text" name="age" label="Ikä"/><br>
+        Email: <input type="text" name="email" label="Email"/><br>
+        <input type="button" id="button" value="Lähetä" /><br>
+      </form>
+
+	  </body>
+</html>

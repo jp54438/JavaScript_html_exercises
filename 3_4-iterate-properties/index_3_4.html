@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+   
+  </head>
+  
+  <body>
+  <h1>Functions of the Window object</h1>
+  <table border = 1>
+  <script> 
+    for (let item in window) {
+      
+      if(window[item] instanceof Function){
+        document.write('<tr><td><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/' + item + ' target=_blank>' + item + '</td>')
+        document.write('<td>'+ window[item] + '</td></tr>')
+      }
+      
+    }
+  </script>
+  </table>
+	</body>
+</html>

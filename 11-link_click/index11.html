@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+
+    <script> 
+      function showAlert() {
+      window.alert("Alert!!")
+      console.log('clicked')
+      return false  
+      }
+
+      function ready() {
+        var linkki = document.querySelector('#alertLink')
+        linkki.onclick = showAlert
+      }
+
+      window.onload = ready
+    </script>
+  </head>
+    <body>
+   
+      <a href = "http://www.is.fi" id="alertLink">Näytä alert</a>
+  
+
+	  </body>
+</html>

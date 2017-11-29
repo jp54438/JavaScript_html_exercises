@@ -1,0 +1,69 @@
+<!--
+  
+18. Create a HTML5 web page where you have a table size of 5 x 5. 
+Define some CSS to the table so that the width of the table could be 100% of parent and height could be for example 500em/px. 
+Add some borders to cells so you can see them. Leave content blank.
+
+Create functionality, when user clicks a cell of the table, it’s background color changed to some random color. 
+You could use querySelectorAll to fetch all the td-elements and then iterate them to add listeners.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen">
+    </style>
+
+    <style>
+    </style>
+    <script> 
+    
+    
+      let count = 0;
+
+    function addText(event) {
+      let li = document.createElement("li")
+      let text = document.createTextNode(count + " hello | ")
+      li.appendChild(text)
+
+      let a = document.createElement("a")
+      a.setAttribute('href', '')
+      let linkText = document.createTextNode("delete")
+      a.appendChild(linkText)
+      a.addEventListener('click', removeText)
+      li.appendChild(a)
+      
+      
+     document.getElementsByTagName('ul')[0].appendChild(li)
+
+     count++;
+    }
+
+    function removeText(event) {
+      event.preventDefault()
+      document.getElementsByTagName('ul')[0].removeChild(event.target.parentElement)
+//      document.getElementsByTagName('ul')[0].removeChild(document.getElementsByTagName('ul')[0].lastChild)
+    }
+      function ready() {
+    
+        document.getElementById('add').addEventListener('click', addText)
+        //document.getElementById('del').addEventListener('click', removeText)
+        
+        for (item of document.getElementsByTagName('a'))
+          item.addEventListener('click', removeText)
+      }
+
+      window.addEventListener('load', ready)
+    </script>
+    <style>
+    </style>
+  </head>
+    <body>
+      <button id="add">add</button>
+        <ul><li>hello | <a href="">delete</a></li></ul>
+      <!--<button id = "del">del</button>-->
+
+	  </body>
+</html>

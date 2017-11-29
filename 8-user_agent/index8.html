@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+  </head>
+  <body>
+    <h1>Window navigator userAgent</h1>
+   
+
+  <script> 
+  let browser = window.navigator.userAgent
+  document.write(browser)
+  
+  browser.toLowerCase
+  
+  if(browser.includes('trident')){
+    window.location.href = 'http://www.microsoft.com'
+  }
+  else {
+    window.location.href='http://google.com'
+  }
+
+  </script>
+
+	</body>
+</html>

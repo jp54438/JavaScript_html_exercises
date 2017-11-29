@@ -1,0 +1,76 @@
+<!--
+  
+18. Create a HTML5 web page where you have a table size of 5 x 5. 
+Define some CSS to the table so that the width of the table could be 100% of parent and height could be for example 500em/px. 
+Add some borders to cells so you can see them. Leave content blank.
+
+Create functionality, when user clicks a cell of the table, it’s background color changed to some random color. 
+You could use querySelectorAll to fetch all the td-elements and then iterate them to add listeners.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen"></style>
+
+    <script> 
+
+      //Math.random() * (max - min) + min;
+      function randomColor(event) {
+        console.log(event.target)
+        let r = Math.floor(Math.random() * 255) 
+        let g = Math.floor(Math.random() * 255)
+        let b = Math.floor(Math.random() * 255)                
+        event.target.style.backgroundColor = "rgb("+r+","+g+","+b+")"
+        return false
+      }
+
+      function ready() {
+       let tds = document.querySelectorAll('td')
+       for(let item of tds){
+         item.addEventListener('click', randomColor)
+       }
+//       console.log(td)
+       // button.addEventListener('click', randomColor)
+      }
+
+      window.addEventListener('load', ready)
+    </script>
+    <style>
+    table, td {
+    border-style : solid;
+    border-width: 1px;
+    }
+
+    table {
+      width : 100%;
+    }
+
+    td {
+      height : 50px;
+    }
+    </style>
+  </head>
+    <body>
+      <table>
+        <tr>
+          <td id="solu"></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>                  
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td>
+        </tr>      
+      </table>
+
+	  </body>
+</html>

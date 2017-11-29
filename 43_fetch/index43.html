@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen">
+    </style>
+    <script> 
+
+    function ready() {
+      var allLinks = document.getElementsByTagName('a')
+      //hae()
+      document.getElementById('haku_btn').addEventListener('click', haePaino)
+      haeNimet()
+
+    }
+
+    function haeNimet(){
+      fetch('https://swapi.co/api/people/').then((response)=>response.json()).then(tulostaNimet).catch(error)
+    }
+  function haePaino(){
+    fetch('https://swapi.co/api/people/').then((response)=>response.json()).then(tulostaPainoIndeksi).catch(error)
+  }
+  function error(err){
+    console.log('Error!!!' + err)
+  }
+  function tulostaNimet(parsed){
+    jsonArray = parsed
+      console.log(jsonArray.results)
+      //let paino
+      //let pituus
+      for(let character of jsonArray.results) {
+       // console.log(document.getElementById('nimi').value)
+       // console.log('paino on ' +  character.mass)
+      console.log(character.name) 
+      
+      let ul = document.getElementById('hahmot')
+      let li = document.createElement('li')
+      let text = document.createTextNode(character.name)
+      li.appendChild(text)
+      ul.appendChild(li)
+ //     ul.appendChild(appendChild())
+      //document.getElementsByTagName('div')[0].appendChild('<br>')  
+      
+      }
+  }
+  function tulostaPainoIndeksi(parsed ) {
+
+      jsonArray = parsed
+      console.log(jsonArray.results)
+      let paino
+      let pituus
+      for(let character of jsonArray.results) {
+       // console.log(document.getElementById('nimi').value)
+       // console.log('paino on ' +  character.mass)
+        if(character.name  === document.getElementById('nimi').value){
+          paino = character.mass
+          pituus = character.height
+        }
+      }
+
+      //console.log('Luken paino indeksi on: ' +painoIndeksi(paino, pituus/100))
+      document.getElementById('painoindeksi').nextSibling.nodeValue = document.getElementById('nimi').value +' painoinindeksi on: ' +  Math.floor(painoIndeksi(paino, pituus/100))
+    }
+
+    function painoIndeksi(weight, length) {
+      return weight/(length * length)
+    }
+    window.addEventListener('load', ready)
+    </script>
+    <style>
+    
+    </style>
+  </head>
+    <body>
+        Star Wars hahmot:
+      <ul id="hahmot"></ul>
+      Anna Star Wars hahmon nimi: <input id = "nimi" type="text" />
+    <button id ="haku_btn"> hae</button><br>
+
+    <div id="painoindeksi"> </div>
+	  </body>
+</html>

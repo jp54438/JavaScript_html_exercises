@@ -1,0 +1,52 @@
+<!--
+  
+18. Create a HTML5 web page where you have a table size of 5 x 5. 
+Define some CSS to the table so that the width of the table could be 100% of parent and height could be for example 500em/px. 
+Add some borders to cells so you can see them. Leave content blank.
+
+Create functionality, when user clicks a cell of the table, it’s background color changed to some random color. 
+You could use querySelectorAll to fetch all the td-elements and then iterate them to add listeners.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen">
+    </style>
+
+    <style>
+    </style>
+    <script> 
+    
+    
+
+    function addText(event) {
+      let li = document.createElement("li")
+      let text = document.createTextNode("hello")
+      li.appendChild(text)
+     document.getElementsByTagName('ul')[0].appendChild(li)
+    }
+
+    function removeText(event) {
+      document.getElementsByTagName('ul')[0].removeChild(document.getElementsByTagName('ul')[0].lastChild)
+    }
+      function ready() {
+    
+        document.getElementById('add').addEventListener('click', addText)
+        document.getElementById('del').addEventListener('click', removeText)
+      }
+
+      window.addEventListener('load', ready)
+    </script>
+    <style>
+    </style>
+  </head>
+    <body>
+      <button id="add">add</button>
+        <ul><li>hello</li></ul>
+      <button id = "del">del</button>
+
+	  </body>
+</html>

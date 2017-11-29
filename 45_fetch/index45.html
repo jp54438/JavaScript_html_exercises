@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen">
+    </style>
+    <script> 
+
+    let myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+
+   
+var init = {
+  method: 'post',
+  headers: myHeaders,
+  body: '{"name": "jack"}'
+}
+
+    function ready(){
+      console.log('request')
+
+      fetch('http://koti.tamk.fi/~c7jpalli/postdata.php', init).then((response) => 
+       response.json()).then(tulosta)//.catch(error)
+    }
+
+
+    function tulosta(jsonObject) {
+      
+      console.log(jsonObject.msg)
+      
+    }
+
+  function error(err){
+    console.log('Error!!!' + err)
+  }
+
+    window.addEventListener('load', ready)
+</script>
+
+<style>    
+    </style>
+  </head>
+    <body>
+     
+	  </body>
+</html>

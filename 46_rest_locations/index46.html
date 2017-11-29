@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Window object</title>
+    
+    <meta charset="UTF-8" />
+    <style media="screen">
+    </style>
+
+    <style>
+    table {
+      width : 100%
+    }
+    th {
+      background-color: lightgray
+    }
+    </style>
+    <script> 
+
+    function ready() {
+      haeLokaatiot()
+    }
+
+    function haeLokaatiot(){
+      fetch('http://localhost:8080/api/locations/').then((response)=>response.json()).then(populateTable).catch(error)
+    }
+  function error(err){
+    console.log('Error!!!' + err)
+  }
+  function populateTable(jsonArray){
+      console.log(jsonArray)
+
+      for (let item of jsonArray) {
+        addTableRow(item.id, item.latitude, item.longitude)
+      }
+  }
+
+  function addTableRow(i, lat, long) {
+      let table = document.getElementById('locations')
+      let id = document.createTextNode(i)
+      let latitude = document.createTextNode(lat)
+      let longitude = document.createTextNode(long)
+      let tableRow = document.createElement('tr')
+      let idCell = document.createElement('td')
+      let latCell = document.createElement('td')
+      let longCell = document.createElement('td')
+      let buttonCell = document.createElement('td')
+      let button = document.createElement('input')
+      button.setAttribute('type', 'button')
+      button.setAttribute('value', 'Delete')
+      button.addEventListener('click', deleteClicked)
+      idCell.appendChild(id)
+      latCell.appendChild(latitude)
+      longCell.appendChild(longitude)
+      buttonCell.appendChild(button)
+      tableRow.appendChild(idCell)
+      tableRow.appendChild(latCell)
+      tableRow.appendChild(longCell)
+      tableRow.appendChild(buttonCell)
+      table.appendChild(tableRow) 
+  }
+  window.addEventListener('load', ready)
+
+  function deleteClicked(event) {
+    
+  }
+</script>
+
+  </head>
+    <body>
+      <table id= "locations" border = "1">
+        <tr id="otsikko">
+          <th>#</th><th>Latitude</th><th>Longitude</th><th>Action</th>
+        </tr>
+
+      </table>
+  
+	  </body>
+</html>
